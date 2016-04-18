@@ -17,7 +17,7 @@ public class Solution {
         //     pre = curr;
         //     curr = temp;
         // }
-        // return pre;
+        // return pre;                        //Return the first node of the reversed list
         if(head == null || head.next == null) {return head;}
         else{
             ListNode temp = reverseList(head.next);  // To get access to the last node and return it.
