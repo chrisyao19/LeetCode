@@ -13,7 +13,7 @@
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         // Solution1 HashSet
-        // HashSet<ListNode> nodeSeen = new HashSet<>();       O(mn) time complexity, not good.
+        // HashSet<ListNode> nodeSeen = new HashSet<>();       //O(mn) time complexity, not good.
         // while(headA!=null){
         //     nodeSeen.add(headA);
         //     headA = headA.next;
