@@ -6,18 +6,51 @@
  *     ListNode(int x) { val = x; }
  * }
  */
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
 public class Solution {
-    public ListNode swapPairs(ListNode head) {
-        if(head==null||head.next==null) return head; //special case
-        ListNode prev = head; ListNode curr = head.next;
-        if(curr.next==null) {
-            prev.next = curr.next;     //if curr is the last node, swap it with the previous one
-        } else {
-            ListNode tmp = swapPairs(curr.next);  //call the swap recursively, every time it is called, swap 2 nodes.
-            prev.next = tmp;
+    public TreeNode sortedListToBST(ListNode head) {
+        TreeNode root = new TreeNode(-1);
+        TreeNode leftpart = new TreeNode(-1);
+        TreeNode rightpart = new TreeNode(-1);
+        //edge case
+        if(head==null) return null;
+        if(head.next==null) {
+            return new TreeNode(head.val);
         }
-        curr.next = prev;     //the common part
-        head = curr;          //the common part
-        return head;
+        //find the mid-point
+        ListNode slow = head; ListNode fast = head;
+        ListNode prev = null;
+       
+        while(fast.next!=null&&fast.next.next!=null) { 
+            fast = fast.next.next;
+            prev = slow;
+            slow = slow.next;
+            // if(prev==null) {
+            //     prev = head;
+            // } else {
+            //     prev = prev.next;
+            // }
+            //System.out.println("enter while");
+        }
+        root.val = slow.val;
+        if(prev!=null) {
+            prev.next = null;
+            leftpart = sortedListToBST(head);
+            root.left = leftpart;
+        } else {
+            //System.out.println("prev is empty");
+            root.left = null;
+        }
+        rightpart = sortedListToBST(slow.next);
+        root.right = rightpart;
+        return root;
     }
 }
