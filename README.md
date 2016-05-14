@@ -1,2 +1,2 @@
 # LeetCode
-LeetCode with Java
+LeetCode with Java， 1st Version
